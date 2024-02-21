@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useJsApiLoader, GoogleMap, LoadScript, Circle } from "@react-google-maps/api";
 import Modal from 'react-modal'
+import Header from "./Header";
+import * as fs from 'fs';
 
 const Home = () => {
   const [modalIsOpen, setModal] = useState(true);
@@ -13,6 +15,7 @@ const Home = () => {
 
   const topBackground: React.CSSProperties = {
     background: 'rgb(0,0,0) linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,114,255,0.7) 100%)',
+
   };
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
@@ -28,10 +31,10 @@ const Home = () => {
 
   const container = {
       width: "60%",
-      height: "100vh"
+      height: "80vh"
   };
 
-  const position = {
+  const mapCenter = {
       lat: 24.4664,
       lng: 124.2054
   };
@@ -51,16 +54,16 @@ const Home = () => {
       },
   };
 
-  const circleOptions: google.maps.CircleOptions = {
-    strokeColor: "#FF0000",
-    strokeOpacity: 0.8,
-    strokeWeight: 2,
-    fillColor: "#FF0000",
-    fillOpacity: 0.35,
-    center: position,
-    radius: 1000
-};
-
+  const circleOptions = {
+    strokeColor: "rgb(255, 0, 0)",
+    strokeOpacity: 1,
+    strokeWiehgt: 2,
+    fillColor: "rgb(255, 0, 0)",
+    fillOpacity: 1,
+    visible: true,
+    radius: 150000
+  };
+  
   const onLoad = (map: google.maps.Map) => {
     setMap(map);
   };
@@ -71,26 +74,18 @@ const Home = () => {
         top: 0,
         left: 0,
         backgroundColor: 'rgba(0, 0, 0, 1)',
-        transition: 'backgroundColor 0.2s ease-in-out',
     },
     content: {
       background: 'none',
       border: 'none',
-      // position: 'fixed',
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
-      // backgroundColor: 'white',
-      // borderRadius: '8px',
-      // padding: '20px',
-      // opacity: modalIsOpen ? 1 : 0,
-      // transition: 'opacity 0.2s ease-in-out',
-      // zIndex: 1000,
       width: '100%',
       height: '100%',
-      display: 'flex', // 親要素をflexコンテナにする
-      alignItems: 'center', // 子要素を垂直方向に中央寄せ
-      justifyContent: 'center', // 子要素を水平方向に中央寄せ
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
 };
 
@@ -114,18 +109,55 @@ const Home = () => {
           </div>
         </div>
       </Modal>
-      <div className="h-screen flex justify-center items-center" style={topBackground}>
-        <LoadScript googleMapsApiKey={API_KEY}>
-          <GoogleMap
-            mapContainerStyle={container}
-            center={position}
-            zoom={11}
-            options={mapOptions}
-            onLoad={onLoad}
-          >
-            {map && <Circle center={position} options={circleOptions} />}
-          </GoogleMap>
-        </LoadScript>
+      <div className="App None h-screen" id="top">
+        <Header />
+        <div className="h-screen flex justify-center items-center" style={topBackground}>
+          <LoadScript googleMapsApiKey={API_KEY}>
+            <GoogleMap
+              mapContainerStyle={container}
+              center={mapCenter}
+              zoom={11}
+              options={mapOptions}
+              onLoad={(map: google.maps.Map) => {
+                const circle = new google.maps.Circle({
+                  center: mapCenter,
+                  strokeColor: "rgb(255, 0, 0)",
+                  strokeOpacity: 1,
+                  strokeWeight: 2,
+                  fillColor: "rgb(255, 0, 0)",
+                  fillOpacity: 1,
+                  visible: true,
+                  radius: 200,
+                  map: map
+                });
+              }}
+            >
+            </GoogleMap>
+          </LoadScript>
+          <div className="flex flex-col">
+            <button className="text-3xl text-gray-300 bg-gray-900 hover:bg-black px-5 py-1 rounded-lg">
+              地図に切り替えるボタン
+            </button>
+            <button className="text-3xl text-gray-300 bg-gray-900 hover:bg-black px-5 py-1 rounded-lg">
+              衛星画像に切り替えるボタン
+            </button>
+            <button className="text-3xl text-gray-300 bg-gray-900 hover:bg-black px-5 py-1 rounded-lg">
+              範囲選択するボタン
+            </button>
+            <button className="text-3xl text-gray-300 bg-gray-900 hover:bg-black px-5 py-1 rounded-lg">
+              海草分布確率20%
+            </button>
+            <button className="text-3xl text-gray-300 bg-gray-900 hover:bg-black px-5 py-1 rounded-lg">
+              海草分布確率40%
+            </button>
+            <button className="text-3xl text-gray-300 bg-gray-900 hover:bg-black px-5 py-1 rounded-lg">
+              海草分布確率60%
+            </button>
+            <button className="text-3xl text-gray-300 bg-gray-900 hover:bg-black px-5 py-1 rounded-lg">
+              海草分布確率80%
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

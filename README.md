@@ -45,8 +45,18 @@
 ### For Developers
 
  - Type Checker
+ ```bash
+poetry run mypy <ファイルのパス>
+```
  - Formatter
+```bash
+poetry run black <ファイルのパス>
+```
  - Code Checker
+```bash
+poetry run flake8 <ファイルのパス>
+```
+
 
 ## Dataset
 

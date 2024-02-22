@@ -21,6 +21,11 @@ xgboost = "^2.0.3"
 catboost = "^1.2.2"
 
 
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+flake8 = "^7.0.0"
+mypy = "^1.8.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

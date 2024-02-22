@@ -66,7 +66,7 @@ poetry run flake8 <ファイルのパス>
 
 | Column               | Description (English)                                                                                                          | 説明 (日本語)                                                                                               |
 |----------------------|--------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
-| id                   | Corresponds to the file name of the satellite image data.                                                                      | 衛星画像データのファイル名に対応します。                                                                         |
+| id                   | Corresponds to the file name of the satellite image data.                                                                      | 衛星画像データのファイル名に対応します                                                                       |
 | latitude_min         | The y-coordinate (latitude) of the bottom left corner of a 100m x 100m rectangle in the target area (around Ishigaki Island coast). | 対象の範囲（石垣島の海岸あたり）を100m×100mの矩形に区切りながら処理している。その矩形の左下のy座標（緯度）              |
 | longitude_min        | The x-coordinate (longitude) of the bottom left corner of the rectangle.                                                       | 上記と同様に矩形の左下のx座標（経度）                                                                    |
 | latitude_max         | The y-coordinate (latitude) of the top right corner of the rectangle.                                                          | 上記と同様に矩形の右上のy座標（緯度）                                                                       |

@@ -66,9 +66,14 @@
 
 ## EDA (Exploratory Data Analysis)
 
-[HTMLファイルを表示する](data/eda.html)
 
 ## Models
+
+### Our Strategy
+
+### Architecture
+
+### Train
 
 
 ## Related

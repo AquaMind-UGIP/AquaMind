@@ -47,8 +47,8 @@ def train_lightgbm_stratified_kfold(
             param,
             lgb_train,
             valid_sets=[lgb_train, lgb_eval],
-            verbose_eval=50,
-            early_stopping_rounds=100,
+            # verbose=50,
+            # early_stopping_rounds=100,
         )
 
         y_pred = gbm.predict(X_test, num_iteration=gbm.best_iteration)
@@ -57,3 +57,30 @@ def train_lightgbm_stratified_kfold(
         models.append(gbm)
 
     return models, scores
+
+
+def predict_with_lightgbm(
+    models: List[lgb.Booster], X_test: pd.DataFrame, columns_feature: List[str]
+) -> np.ndarray:
+    """
+    訓練済みLightGBMモデルのリストを使用してテストデータセットの予測を行う関数。
+
+    引数:
+    - models: List[lgb.Booster], 訓練済みLightGBMモデルのリスト。
+    - X_test: pandas DataFrame, テストデータセット。
+    - columns_feature: list, 特徴量のカラム名のリスト。
+
+    戻り値:
+    - np.ndarray: テストデータセットの予測値の平均値。
+    """
+    predictions = []
+
+    for model in models:
+        y_pred = model.predict(
+            X_test[columns_feature], num_iteration=model.best_iteration
+        )
+        predictions.append(y_pred)
+
+    predictions_mean = np.mean(predictions, axis=0)
+
+    return predictions_mean

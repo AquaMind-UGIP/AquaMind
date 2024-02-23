@@ -47,8 +47,8 @@ def train_catboost_stratified_kfold(
         model.fit(
             train_pool,
             eval_set=test_pool,
-            verbose=50,
-            early_stopping_rounds=100,
+            # verbose=50,
+            # early_stopping_rounds=100,
             use_best_model=True,
         )
 

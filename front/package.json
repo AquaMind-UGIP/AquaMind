@@ -1,6 +1,7 @@
 {
   "name": "front",
   "version": "0.1.0",
+  "homepage": "https://aquamind-ugip.github.io/AquaMind/",
   "private": true,
   "dependencies": {
     "@react-google-maps/api": "^2.19.3",

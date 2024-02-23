@@ -1,105 +1,46 @@
-<h1 align="center">
-  <br>
-  <a href="リンク先のURL"><img src="https://github.com/kohseim/AquaMind/blob/main/images/logo_black.png?raw=true" alt="AquaMind" width="500"></a>
-  <br>
-  AquaMind
-  <br>
-</h1>
+# Getting Started with Create React App
 
-<h4 align="center">You can view our creation on this <a href="" target="_blank">site</a>.</h4>
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-<p align="center">
-  <a href=>
-    <img src="https://badge.fury.io/js/electron-markdownify.svg"
-         alt="Gitter">
-  </a>
-  <a href=><img src="https://badges.gitter.im/amitmerchant1990/electron-markdownify.svg"></a>
-  <a href=>
-      <img src="https://img.shields.io/badge/SayThanks.io-%E2%98%BC-1EAEDB.svg">
-  </a>
-  <a href=>
-    <img src="https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&amp;style=flat">
-  </a>
-</p>
+## Available Scripts
 
-<p align="center">
-  <a href="#overview">Overview</a> •
-  <a href="#environment">Environment</a> •
-  <a href="#datasets">Dataset</a> •
-  <a href="#EDA">EDA</a> •
-  <a href="#models">Models</a> •
-  <a href="#related">Related</a> •
-  <a href="#acknowledgement">Acknowledgement</a>
-</p>
+In the project directory, you can run:
 
-## Overview
+### `npm start`
 
-## Environment
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Quick Start
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-### Docker
+### `npm test`
 
-### Library
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### For Developers
+### `npm run build`
 
- - Type Checker
- ```bash
-poetry run mypy <ファイルのパス>
-```
- - Formatter
-```bash
-poetry run black <ファイルのパス>
-```
- - Code Checker
-```bash
-poetry run flake8 <ファイルのパス>
-```
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-## Dataset
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### Dataset Overview
+### `npm run eject`
 
-### Dataset Structure
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-| Column               | Description (English)                                                                                                          | 説明 (日本語)                                                                                               |
-|----------------------|--------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
-| id                   | Corresponds to the file name of the satellite image data.                                                                      | 衛星画像データのファイル名に対応します                                                                       |
-| latitude_min         | The y-coordinate (latitude) of the bottom left corner of a 100m x 100m rectangle in the target area (around Ishigaki Island coast). | 対象の範囲（石垣島の海岸あたり）を100m×100mの矩形に区切りながら処理している。その矩形の左下のy座標（緯度）              |
-| longitude_min        | The x-coordinate (longitude) of the bottom left corner of the rectangle.                                                       | 上記と同様に矩形の左下のx座標（経度）                                                                    |
-| latitude_max         | The y-coordinate (latitude) of the top right corner of the rectangle.                                                          | 上記と同様に矩形の右上のy座標（緯度）                                                                       |
-| longitude_max        | The x-coordinate (longitude) of the top right corner of the rectangle.                                                         | 上記と同様に矩形の右上のx座標（経度）                                                                       |
-| sand                 | The number of pixels of sand distributed within the rectangle, as surveyed by the [Allen Coral Atlas](https://allencoralatlas.org/). | [Allen Coral Atlas](https://allencoralatlas.org/)で調査した、矩形内に分布するsandのピクセル数                           |
-| coral_algae          | The number of pixels of coral/algae within the rectangle.                                                                       | 矩形内に分布するcoral/algaeのピクセル数                                                                      |
-| rock                 | The number of pixels of rock within the rectangle.                                                                              | 矩形内に分布するrockのピクセル数                                                                             |
-| seagrass             | The number of pixels of seagrass within the rectangle.                                                                          | 矩形内に分布するseagrassのピクセル数。                                                                         |
-| microalgal_mats      | The number of pixels of microalgal mats within the rectangle.                                                                   | 矩形内に分布するmicroalgal matsのピクセル数                                                                  |
-| rubble               | The number of pixels of rubble within the rectangle.                                                                            | 矩形内に分布するrubbleのピクセル数                                                                        |
-| sand_rate            | The proportion of sand within the rectangle, as surveyed by the [Allen Coral Atlas](https://allencoralatlas.org/).              | [Allen Coral Atlas](https://allencoralatlas.org/)で調査した、矩形内に分布するsandの割合                           |
-| coral_algae_rate     | The proportion of coral/algae within the rectangle.                                                                             | 矩形内に分布するcoral/algaeの割合                                                                            |
-| rock_rate            | The proportion of rock within the rectangle.                                                                                    | 矩形内に分布するrockの割合                                                                                   |
-| seagrass_rate        | The proportion of seagrass within the rectangle.                                                                                | 矩形内に分布するseagrassの割合。                                                                                |
-| microalgal_mats_rate | The proportion of microalgal mats within the rectangle.                                                                         | 矩形内に分布するmicroalgal matsの割合。                                                                         |
-| rubble_rate          | The proportion of rubble within the rectangle.                                                                                  | 矩形内に分布するrubbleの割合。                                                                                  |
-| seagrass_overlap     | The percentage of the rectangle's area that overlaps with seagrass distribution areas obtained from the [OCEAN DATA VIEWER](https://data.unep-wcmc.org/). | [OCEAN DATA VIEWER](https://data.unep-wcmc.org/)で取得した海草の分布の領域に対して、100m×100mの矩形の面積の内何
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-## EDA (Exploratory Data Analysis)
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Learn More
 
-## Models
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-### Our Strategy
-
-### Architecture
-
-### Train
-
-
-## Related
-
-
-## Acknowledgement
-
+To learn React, check out the [React documentation](https://reactjs.org/).

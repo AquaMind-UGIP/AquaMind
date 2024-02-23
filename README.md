@@ -93,7 +93,32 @@ poetry run flake8 <ファイルのパス>
 
 ### Our Strategy
 
-### Architecture
+<h1 align="center">
+  <br>
+  <a href="リンク先のURL"><img src="https://github.com/kohseim/AquaMind/blob/main/images/AquaMind_構想.png?raw=true" alt="AquaMind" width="500"></a>
+  <br>
+</h1>
+
+### Algorithm
+
+Classify using majority vote from the following 13 models.
+
+| Number | Model                                   | Feature Pattern                            |
+|--------|-----------------------------------------|--------------------------------------------|
+| 1      | lightgbm + optuna                       | A                                          |
+| 2      | lightgbm + optuna                       | B                                          |
+| 3      | lightgbm + optuna                       | C                                          |
+| 4      | xgboost + optuna                        | A                                          |
+| 5      | xgboost + optuna                        | B                                          |
+| 6      | catboost + optuna                       | A                                          |
+| 7      | catboost + optuna                       | B                                          |
+| 8      | randomforest + optuna                   | B                                          |
+| 9      | tabpfn                                  | A                                          |
+| 10     | tabpfn                                  | G                                          |
+| 11     | Ensemble{(lightgbm + optuna)*3)}       | D                                          |
+| 12     | Ensemble{(lightgbm + optuna)*3)}       | E                                          |
+| 13     | Ensemble{(xgboost + lightgbm + catboost) + optuna} | F                                |
+
 
 ### Train
 

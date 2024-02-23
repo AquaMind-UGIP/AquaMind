@@ -165,7 +165,7 @@ Absolute Quantity + Rate + Image
 
 Classify using majority vote from the following 13 models.
 
-| Number | Model                                   | Feature Pattern                            |
+| Number | Model                                   | Feature Set                            |
 |--------|-----------------------------------------|--------------------------------------------|
 | 1      | lightgbm + optuna                       | A                                          |
 | 2      | lightgbm + optuna                       | B                                          |

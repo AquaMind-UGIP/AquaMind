@@ -20,6 +20,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "rm": "rm -rf docs",
+    "mv": "mv build docs",
+    "git": "git add . && git commit && git push origin master",
+    "deploy": "npm run rm && npm run build && npm run mv && npm run git",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -48,8 +48,8 @@ def train_xgboost_stratified_kfold(
             dtrain,
             num_boost_round=param.get("num_boost_round", 100),
             evals=[(dtrain, "train"), (dtest, "eval")],
-            early_stopping_rounds=param.get("early_stopping_rounds", 10),
-            verbose_eval=param.get("verbose_eval", 50),
+            # early_stopping_rounds=param.get("early_stopping_rounds", 10),
+            # verbose_eval=param.get("verbose_eval", 50),
         )
 
         y_pred = bst.predict(dtest)

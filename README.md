@@ -26,7 +26,7 @@
   <a href="#overview">Overview</a> •
   <a href="#environment">Environment</a> •
   <a href="#datasets">Dataset</a> •
-  <a href="#EDA">EDA</a> •
+  <a href="#Feature Engineering">Feature Engineering</a> •
   <a href="#models">Models</a> •
   <a href="#related">Related</a> •
   <a href="#acknowledgement">Acknowledgement</a>
@@ -86,8 +86,70 @@ poetry run flake8 <ファイルのパス>
 | seagrass_overlap     | The percentage of the rectangle's area that overlaps with seagrass distribution areas obtained from the [OCEAN DATA VIEWER](https://data.unep-wcmc.org/). | [OCEAN DATA VIEWER](https://data.unep-wcmc.org/)で取得した海草の分布の領域に対して、100m×100mの矩形の面積の内何
 
 
-## EDA (Exploratory Data Analysis)
+## Feature Engineering
 
+### Feature Engineering Plan
+
+- **Categorical Variables**  
+Create binary features for all absolute quantity features `'sand', 'coral_algae', 'rock', 'seagrass', 'microalgal_mats', 'rubble'`.
+
+- **Geospatial × Domain**  
+(`'latitude_min'` + `'latitude_max'` )/2 × `'seagrass'`  
+(`'longitude_min'` + `'longitude_max'` )/2 × `'seagrass_rate'`  
+(`'latitude_min'` + `'latitude_max'` )/2 × `'coral_algae'`  
+(`'longitude_min'` + `'longitude_max'` )/2 × `'coral_algae'`  
+(`'latitude_min'` + `'latitude_max'` )/2 × `'rock'`  
+(`'longitude_min'` + `'longitude_max'` )/2 × `'rock'`  
+(`'latitude_min'` + `'latitude_max'` )/2 × `'microalgal_mats'`  
+(`'longitude_min'` + `'longitude_max'` )/2 × `'microalgal_mats'`  
+(`'latitude_min'` + `'latitude_max'` )/2 × `'rubble'`  
+(`'longitude_min'` + `'longitude_max'` )/2 × `'rubble'`
+
+- **Exponential Transform**  
+Take the exponential of `'seagrass'` and `'seagrass_rate'`.
+
+- **Geospatial × Image**  
+(`'latitude_min'` + `'latitude_max'` )/2 × Image Feature A  
+(`'latitude_min'` + `'latitude_max'` )/2 × Image Feature B  
+(`'longitude_min'` + `'longitude_max'` )/2 × Image Feature C  
+(`'longitude_min'` + `'longitude_max'` )/2 × Image Feature D
+
+- **Image × Absolute Quantity**  
+Image Feature A × `'seagrass'`  
+Image Feature B × `'seagrass'`  
+Image Feature C × `'coral_algae'`  
+Image Feature D × `'rock'`  
+Image Feature E × `'microalgal_mats'`  
+Image Feature F × `'rubble'`
+
+- **Unsupervised Learning Features**  
+KMeans clustering (3 classes) on absolute quantity  
+KMeans clustering (5 classes) on absolute quantity  
+KMeans clustering (5 classes) on (rate + image)  
+KMeans clustering (7 classes) on (rate + image)
+
+### Feature Sets
+
+- A 
+Geospatial + Absolute Quantity + Rate + Image + Categorical + Unsupervised
+
+- B 
+Absolute Quantity + Rate + Image + Categorical + Unsupervised
+
+- C 
+Absolute Quantity + Image
+
+- D  
+(Geospatial × Domain) + Categorical + Image
+
+- E  
+Exponential + (Image × Absolute Quantity) + Unsupervised
+
+- F  
+(Geospatial × Image) + Rate
+
+- G  
+Absolute Quantity + Rate + Image
 
 ## Models
 

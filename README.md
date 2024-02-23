@@ -130,13 +130,13 @@ KMeans clustering (7 classes) on (rate + image)
 
 ### Feature Sets
 
-- A 
+- A  
 Geospatial + Absolute Quantity + Rate + Image + Categorical + Unsupervised
 
-- B 
+- B  
 Absolute Quantity + Rate + Image + Categorical + Unsupervised
 
-- C 
+- C  
 Absolute Quantity + Image
 
 - D  

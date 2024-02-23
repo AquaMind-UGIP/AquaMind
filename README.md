@@ -88,6 +88,20 @@ poetry run flake8 <ファイルのパス>
 
 ## Feature Engineering
 
+### Original Features
+
+- **Geospatial Information** (location)
+  - `'latitude_min'`, `'longitude_min'`, `'latitude_max'`, `'longitude_max'`
+
+- **Absolute Quantity** (Domain)
+  - `'sand'`, `'coral_algae'`, `'rock'`, `'seagrass'`, `'microalgal_mats'`, `'rubble'`
+
+- **Rate** (Domain)
+  - `'sand_rate'`, `'coral_algae_rate'`, `'rock_rate'`, `'seagrass_rate'`, `'microalgal_mats_rate'`, `'rubble_rate'`
+
+- **Image** Features
+  - 5-8 features extracted from `xxx.tif` by Ando
+
 ### Feature Engineering Plan
 
 - **Categorical Variables**  

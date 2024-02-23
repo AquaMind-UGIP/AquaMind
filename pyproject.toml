@@ -19,6 +19,8 @@ sweetviz = "^2.3.1"
 lightgbm = "^4.3.0"
 xgboost = "^2.0.3"
 catboost = "^1.2.2"
+optuna = "^3.5.0"
+tabpfn = "^0.1.10"
 
 
 [tool.poetry.group.dev.dependencies]

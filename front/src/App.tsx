@@ -1,15 +1,15 @@
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import Home from "./components/home";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router basename="/AquaMind">
       <Routes>
-        <Route path="/AquaMind/" element={<Home />} />
+        <Route path="/" element={<Home />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 

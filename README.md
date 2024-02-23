@@ -92,7 +92,6 @@ poetry run flake8 <ファイルのパス>
 ## Models
 
 ### Our Strategy
-
 <h1 align="center">
   <br>
   <a href="リンク先のURL"><img src="https://github.com/kohseim/AquaMind/blob/main/images/AquaMind_構想.png?raw=true" alt="AquaMind" width="500"></a>

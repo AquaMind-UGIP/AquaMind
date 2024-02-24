@@ -83,7 +83,15 @@ poetry run flake8 <ファイルのパス>
 | seagrass_rate        | The proportion of seagrass within the rectangle.                                                                                | 矩形内に分布するseagrassの割合。                                                                                |
 | microalgal_mats_rate | The proportion of microalgal mats within the rectangle.                                                                         | 矩形内に分布するmicroalgal matsの割合。                                                                         |
 | rubble_rate          | The proportion of rubble within the rectangle.                                                                                  | 矩形内に分布するrubbleの割合。                                                                                  |
-| seagrass_overlap     | The percentage of the rectangle's area that overlaps with seagrass distribution areas obtained from the [OCEAN DATA VIEWER](https://data.unep-wcmc.org/). | [OCEAN DATA VIEWER](https://data.unep-wcmc.org/)で取得した海草の分布の領域に対して、100m×100mの矩形の面積の内何
+| seagrass_overlap     | The percentage of the rectangle's area that overlaps with seagrass distribution areas obtained from the [OCEAN DATA VIEWER](https://data.unep-wcmc.org/). | [OCEAN DATA VIEWER](https://data.unep-wcmc.org/)で取得した海草の分布の領域に対して、100m×100mの矩形の面積の内何割をしめるか。
+
+use satellite images from google map within the latitude and longitude range depicted in the following table
+
+<h1 align="center">
+  <br>
+  <a href="リンク先のURL"><img src="https://github.com/kohseim/AquaMind/blob/main/images/google_map_sample.jpg?raw=true"  width="700"></a>
+  <br>
+</h1>
 
 
 ## Feature Engineering

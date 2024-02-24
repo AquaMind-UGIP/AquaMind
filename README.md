@@ -193,12 +193,12 @@ Classify using majority vote from the following 13 models.
 | Number | Model                                   | Feature Set                            |
 |--------|-----------------------------------------|--------------------------------------------|
 | 1      | lightgbm + optuna                       | A                                          |
-| 2      | lightgbm + optuna                       | B                                          |
+| 2      | lightgbm + optuna + pseudo labeling     | B                                          |
 | 3      | lightgbm + optuna                       | C                                          |
-| 4      | xgboost + optuna                        | A                                          |
+| 4      | xgboost + optuna + pseudo labeling      | A                                          |
 | 5      | xgboost + optuna                        | B                                          |
 | 6      | catboost + optuna                       | A                                          |
-| 7      | catboost + optuna                       | B                                          |
+| 7      | catboost + optuna  + pseudo labeling    | B                                          |
 | 8      | randomforest + optuna                   | B                                          |
 | 9      | tabpfn                                  | A                                          |
 | 10     | tabpfn                                  | G                                          |

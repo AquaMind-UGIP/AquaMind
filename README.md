@@ -64,6 +64,8 @@ poetry run flake8 <ファイルのパス>
 
 ### Dataset Structure
 
+### Domain Data
+
 | Column               | Description (English)                                                                                                          | 説明 (日本語)                                                                                               |
 |----------------------|--------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
 | id                   | Corresponds to the file name of the satellite image data.                                                                      | 衛星画像データのファイル名に対応します                                                                       |
@@ -85,6 +87,8 @@ poetry run flake8 <ファイルのパス>
 | rubble_rate          | The proportion of rubble within the rectangle.                                                                                  | 矩形内に分布するrubbleの割合。                                                                                  |
 | seagrass_overlap     | The percentage of the rectangle's area that overlaps with seagrass distribution areas obtained from the [OCEAN DATA VIEWER](https://data.unep-wcmc.org/). | [OCEAN DATA VIEWER](https://data.unep-wcmc.org/)で取得した海草の分布の領域に対して、100m×100mの矩形の面積の内何割をしめるか。
 
+### Satellite Data
+
 use satellite images from google map within the latitude and longitude range depicted in the following table
 
 <h1 align="center">
@@ -92,7 +96,6 @@ use satellite images from google map within the latitude and longitude range dep
   <a href="リンク先のURL"><img src="https://github.com/kohseim/AquaMind/blob/main/images/google_map_sample.jpg?raw=true"  width="700"></a>
   <br>
 </h1>
-
 
 ## Feature Engineering
 

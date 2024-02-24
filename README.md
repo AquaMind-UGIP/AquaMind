@@ -110,8 +110,40 @@ use satellite images from google map within the latitude and longitude range dep
 - **Rate** (Domain)
   - `'sand_rate'`, `'coral_algae_rate'`, `'rock_rate'`, `'seagrass_rate'`, `'microalgal_mats_rate'`, `'rubble_rate'`
 
-- **Image** Features
-  - 5-8 features extracted from `xxx.tif` by Ando
+### Color Features
+
+For each image, color features are extracted by normalizing the RGB values and then calculating the sum, mean, and variance for each color channel.
+
+- **Sum of Normalized RGB Components**
+  - `r_sum`: The sum of all normalized red components.
+  - `g_sum`: The sum of all normalized green components.
+  - `b_sum`: The sum of all normalized blue components.
+
+- **Mean of Normalized RGB Components**
+  - `r_mean`: The mean of all normalized red components.
+  - `g_mean`: The mean of all normalized green components.
+  - `b_mean`: The mean of all normalized blue components.
+
+- **Variance of Normalized RGB Components**
+  - `r_var`: The variance of all normalized red components.
+  - `g_var`: The variance of all normalized green components.
+  - `b_var`: The variance of all normalized blue components.
+
+### Texture Features
+
+Texture features are extracted using Histogram of Oriented Gradients (HOG) and Scale-Invariant Feature Transform (SIFT).
+
+- **HOG Features**
+  - `hog_sum`: The sum of all HOG feature values across all pixels.
+  - `hog_mean`: The mean of HOG feature values across all pixels.
+  - `hog_var`: The variance of HOG feature values across all pixels.
+
+- **SIFT Features**
+  - `sift_sum`: The sum of all SIFT feature values across all pixels.
+  - `sift_mean`: The mean of SIFT feature values across all pixels.
+  - `sift_var`: The variance of SIFT feature values across all pixels.
+
+Normalization of RGB values and the extraction of HOG and SIFT features are performed to capture the color and texture information from images, which can be critical for various image processing tasks such as classification, detection, and recognition.
 
 ### Feature Engineering Plan
 

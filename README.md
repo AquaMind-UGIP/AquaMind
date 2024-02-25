@@ -1,27 +1,11 @@
-<h1 align="center">
-  <br>
-  <a href="リンク先のURL"><img src="https://github.com/kohseim/AquaMind/blob/main/images/logo_black.png?raw=true" alt="AquaMind" width="500"></a>
-  <br>
-  AquaMind
-  <br>
-</h1>
+# Getting Started with Create React App
 
-<h4 align="center">You can view our creation on this <a href="" target="_blank">site</a>.</h4>
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-<p align="center">
-  <a href=>
-    <img src="https://badge.fury.io/js/electron-markdownify.svg"
-         alt="Gitter">
-  </a>
-  <a href=><img src="https://badges.gitter.im/amitmerchant1990/electron-markdownify.svg"></a>
-  <a href=>
-      <img src="https://img.shields.io/badge/SayThanks.io-%E2%98%BC-1EAEDB.svg">
-  </a>
-  <a href=>
-    <img src="https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&amp;style=flat">
-  </a>
-</p>
+## Available Scripts
 
+In the project directory, you can run:
+=======
 <p align="center">
   <a href="#overview">Overview</a> •
   <a href="#environment">Environment</a> •
@@ -32,37 +16,32 @@
   <a href="#acknowledgement">Acknowledgement</a>
 </p>
 
-## Overview
+### `npm start`
 
-## Environment
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Quick Start
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-### Docker
+### `npm test`
 
-### Library
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### For Developers
+### `npm run build`
 
- - Type Checker
- ```bash
-poetry run mypy <ファイルのパス>
-```
- - Formatter
-```bash
-poetry run black <ファイルのパス>
-```
- - Code Checker
-```bash
-poetry run flake8 <ファイルのパス>
-```
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-## Dataset
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### Dataset Overview
+### `npm run eject`
 
-### Dataset Structure
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
 ### Domain Data
 
@@ -247,3 +226,4 @@ Classify using majority vote from the following 13 models.
 
 ## Acknowledgement
 
+To learn React, check out the [React documentation](https://reactjs.org/).

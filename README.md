@@ -5,6 +5,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
+=======
+<p align="center">
+  <a href="#overview">Overview</a> •
+  <a href="#environment">Environment</a> •
+  <a href="#datasets">Dataset</a> •
+  <a href="#Feature Engineering">Feature Engineering</a> •
+  <a href="#models">Models</a> •
+  <a href="#related">Related</a> •
+  <a href="#acknowledgement">Acknowledgement</a>
+</p>
 
 ### `npm start`
 
@@ -33,14 +43,187 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Domain Data
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+| Column               | Description (English)                                                                                                          | 説明 (日本語)                                                                                               |
+|----------------------|--------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| id                   | Corresponds to the file name of the satellite image data.                                                                      | 衛星画像データのファイル名に対応します                                                                       |
+| latitude_min         | The y-coordinate (latitude) of the bottom left corner of a 100m x 100m rectangle in the target area (around Ishigaki Island coast). | 対象の範囲（石垣島の海岸あたり）を100m×100mの矩形に区切りながら処理している。その矩形の左下のy座標（緯度）              |
+| longitude_min        | The x-coordinate (longitude) of the bottom left corner of the rectangle.                                                       | 上記と同様に矩形の左下のx座標（経度）                                                                    |
+| latitude_max         | The y-coordinate (latitude) of the top right corner of the rectangle.                                                          | 上記と同様に矩形の右上のy座標（緯度）                                                                       |
+| longitude_max        | The x-coordinate (longitude) of the top right corner of the rectangle.                                                         | 上記と同様に矩形の右上のx座標（経度）                                                                       |
+| sand                 | The number of pixels of sand distributed within the rectangle, as surveyed by the [Allen Coral Atlas](https://allencoralatlas.org/). | [Allen Coral Atlas](https://allencoralatlas.org/)で調査した、矩形内に分布するsandのピクセル数                           |
+| coral_algae          | The number of pixels of coral/algae within the rectangle.                                                                       | 矩形内に分布するcoral/algaeのピクセル数                                                                      |
+| rock                 | The number of pixels of rock within the rectangle.                                                                              | 矩形内に分布するrockのピクセル数                                                                             |
+| seagrass             | The number of pixels of seagrass within the rectangle.                                                                          | 矩形内に分布するseagrassのピクセル数。                                                                         |
+| microalgal_mats      | The number of pixels of microalgal mats within the rectangle.                                                                   | 矩形内に分布するmicroalgal matsのピクセル数                                                                  |
+| rubble               | The number of pixels of rubble within the rectangle.                                                                            | 矩形内に分布するrubbleのピクセル数                                                                        |
+| sand_rate            | The proportion of sand within the rectangle, as surveyed by the [Allen Coral Atlas](https://allencoralatlas.org/).              | [Allen Coral Atlas](https://allencoralatlas.org/)で調査した、矩形内に分布するsandの割合                           |
+| coral_algae_rate     | The proportion of coral/algae within the rectangle.                                                                             | 矩形内に分布するcoral/algaeの割合                                                                            |
+| rock_rate            | The proportion of rock within the rectangle.                                                                                    | 矩形内に分布するrockの割合                                                                                   |
+| seagrass_rate        | The proportion of seagrass within the rectangle.                                                                                | 矩形内に分布するseagrassの割合。                                                                                |
+| microalgal_mats_rate | The proportion of microalgal mats within the rectangle.                                                                         | 矩形内に分布するmicroalgal matsの割合。                                                                         |
+| rubble_rate          | The proportion of rubble within the rectangle.                                                                                  | 矩形内に分布するrubbleの割合。                                                                                  |
+| seagrass_overlap     | The percentage of the rectangle's area that overlaps with seagrass distribution areas obtained from the [OCEAN DATA VIEWER](https://data.unep-wcmc.org/). | [OCEAN DATA VIEWER](https://data.unep-wcmc.org/)で取得した海草の分布の領域に対して、100m×100mの矩形の面積の内何割をしめるか。
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Satellite Data
 
-## Learn More
+use satellite images from google map within the latitude and longitude range depicted in the following table
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<h1 align="center">
+  <br>
+  <a href="リンク先のURL"><img src="https://github.com/kohseim/AquaMind/blob/main/images/google_map_sample.jpg?raw=true"  width="700"></a>
+  <br>
+</h1>
+
+## Feature Engineering
+
+### Original Features
+
+- **Geospatial Information** (location)
+  - `'latitude_min'`, `'longitude_min'`, `'latitude_max'`, `'longitude_max'`
+
+- **Absolute Quantity** (Domain)
+  - `'sand'`, `'coral_algae'`, `'rock'`, `'seagrass'`, `'microalgal_mats'`, `'rubble'`
+
+- **Rate** (Domain)
+  - `'sand_rate'`, `'coral_algae_rate'`, `'rock_rate'`, `'seagrass_rate'`, `'microalgal_mats_rate'`, `'rubble_rate'`
+
+### Color Features
+
+For each image, color features are extracted by normalizing the RGB values and then calculating the sum, mean, and variance for each color channel.
+
+- **Sum of Normalized RGB Components**
+  - `r_sum`: The sum of all normalized red components.
+  - `g_sum`: The sum of all normalized green components.
+  - `b_sum`: The sum of all normalized blue components.
+
+- **Mean of Normalized RGB Components**
+  - `r_mean`: The mean of all normalized red components.
+  - `g_mean`: The mean of all normalized green components.
+  - `b_mean`: The mean of all normalized blue components.
+
+- **Variance of Normalized RGB Components**
+  - `r_var`: The variance of all normalized red components.
+  - `g_var`: The variance of all normalized green components.
+  - `b_var`: The variance of all normalized blue components.
+
+### Texture Features
+
+Texture features are extracted using Histogram of Oriented Gradients (HOG) and Scale-Invariant Feature Transform (SIFT).
+
+- **HOG Features**
+  - `hog_sum`: The sum of all HOG feature values across all pixels.
+  - `hog_mean`: The mean of HOG feature values across all pixels.
+  - `hog_var`: The variance of HOG feature values across all pixels.
+
+- **SIFT Features**
+  - `sift_sum`: The sum of all SIFT feature values across all pixels.
+  - `sift_mean`: The mean of SIFT feature values across all pixels.
+  - `sift_var`: The variance of SIFT feature values across all pixels.
+
+Normalization of RGB values and the extraction of HOG and SIFT features are performed to capture the color and texture information from images, which can be critical for various image processing tasks such as classification, detection, and recognition.
+
+### Feature Engineering Plan
+
+- **Categorical Variables**  
+Create binary features for all absolute quantity features `'sand', 'coral_algae', 'rock', 'seagrass', 'microalgal_mats', 'rubble'`.
+
+- **Geospatial × Domain**  
+(`'latitude_min'` + `'latitude_max'` )/2 × `'seagrass'`  
+(`'longitude_min'` + `'longitude_max'` )/2 × `'seagrass_rate'`  
+(`'latitude_min'` + `'latitude_max'` )/2 × `'coral_algae'`  
+(`'longitude_min'` + `'longitude_max'` )/2 × `'coral_algae'`  
+(`'latitude_min'` + `'latitude_max'` )/2 × `'rock'`  
+(`'longitude_min'` + `'longitude_max'` )/2 × `'rock'`  
+(`'latitude_min'` + `'latitude_max'` )/2 × `'microalgal_mats'`  
+(`'longitude_min'` + `'longitude_max'` )/2 × `'microalgal_mats'`  
+(`'latitude_min'` + `'latitude_max'` )/2 × `'rubble'`  
+(`'longitude_min'` + `'longitude_max'` )/2 × `'rubble'`
+
+- **Exponential Transform**  
+Take the exponential of `'seagrass'` and `'seagrass_rate'`.
+
+- **Geospatial × Image**  
+(`'latitude_min'` + `'latitude_max'` )/2 × Image Feature A  
+(`'latitude_min'` + `'latitude_max'` )/2 × Image Feature B  
+(`'longitude_min'` + `'longitude_max'` )/2 × Image Feature C  
+(`'longitude_min'` + `'longitude_max'` )/2 × Image Feature D
+
+- **Image × Absolute Quantity**  
+Image Feature A × `'seagrass'`  
+Image Feature B × `'seagrass'`  
+Image Feature C × `'coral_algae'`  
+Image Feature D × `'rock'`  
+Image Feature E × `'microalgal_mats'`  
+Image Feature F × `'rubble'`
+
+- **Unsupervised Learning Features**  
+KMeans clustering (3 classes) on absolute quantity  
+KMeans clustering (5 classes) on absolute quantity  
+KMeans clustering (5 classes) on (rate + image)  
+KMeans clustering (7 classes) on (rate + image)
+
+### Feature Sets
+
+- A  
+Geospatial + Absolute Quantity + Rate + Image + Categorical + Unsupervised
+
+- B  
+Absolute Quantity + Rate + Image + Categorical + Unsupervised
+
+- C  
+Absolute Quantity + Image
+
+- D  
+(Geospatial × Domain) + Categorical + Image
+
+- E  
+Exponential + (Image × Absolute Quantity) + Unsupervised
+
+- F  
+(Geospatial × Image) + Rate
+
+- G  
+Absolute Quantity + Rate + Image
+
+## Models
+
+### Our Strategy
+
+<h1 align="center">
+  <br>
+  <a href="リンク先のURL"><img src="https://github.com/kohseim/AquaMind/blob/main/images/AquaMind_構想.png?raw=true"  width="1000"></a>
+  <br>
+</h1>
+
+### Algorithm
+
+Classify using majority vote from the following 13 models.
+
+| Number | Model                                   | Feature Set                            |
+|--------|-----------------------------------------|--------------------------------------------|
+| 1      | lightgbm + optuna                       | A                                          |
+| 2      | lightgbm + optuna + pseudo labeling     | B                                          |
+| 3      | lightgbm + optuna                       | C                                          |
+| 4      | xgboost + optuna + pseudo labeling      | A                                          |
+| 5      | xgboost + optuna                        | B                                          |
+| 6      | catboost + optuna                       | A                                          |
+| 7      | catboost + optuna  + pseudo labeling    | B                                          |
+| 8      | randomforest + optuna                   | B                                          |
+| 9      | tabpfn                                  | A                                          |
+| 10     | tabpfn                                  | G                                          |
+| 11     | Ensemble{(lightgbm + optuna)*3)}       | D                                          |
+| 12     | Ensemble{(lightgbm + optuna)*3)}       | E                                          |
+| 13     | Ensemble{(xgboost + lightgbm + catboost) + optuna} | F                                |
+
+
+### Train
+
+
+## Related
+
+
+## Acknowledgement
 
 To learn React, check out the [React documentation](https://reactjs.org/).

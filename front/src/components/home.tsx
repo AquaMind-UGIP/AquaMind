@@ -55,7 +55,7 @@ const Home = () => {
   };
 
   const circleOptions = {
-    strokeColor: "rgb(255, 0, 0)",
+    strokeColor: "rgb(254, 0, 0)",
     strokeOpacity: 1,
     strokeWiehgt: 2,
     fillColor: "rgb(255, 0, 0)",

@@ -23,11 +23,13 @@
     "rm": "rm -rf docs",
     "mv": "mv build docs",
     "git": "git add . && git commit && git push origin master",
-    "deploy": "npm run rm && npm run build && npm run mv && npm run git",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages main -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+    
   },
   "eslintConfig": {
     "extends": [
@@ -50,6 +52,7 @@
   "devDependencies": {
     "@types/react-modal": "^3.16.3",
     "autoprefixer": "^10.4.17",
+    "gh-pages": "^6.1.1",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1"
   }

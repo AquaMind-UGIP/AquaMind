@@ -1,0 +1,82 @@
+[
+    {
+        "id": "1",
+        "latitude_min": "124.0901706",
+        "longitude_min": "24.245",
+        "latitude_max": "124.0920562",
+        "longitude_max": "24.24688566",
+        "probability": "0"
+    },
+    {
+        "id": "2",
+        "latitude_min": "124.0977132",
+        "longitude_min": "24.2544283",
+        "latitude_max": "124.0995989",
+        "longitude_max": "24.25631396",
+        "probability": "0.1"
+    },
+    {
+        "id": "3",
+        "latitude_min": "124.1391977",
+        "longitude_min": "24.25254264",
+        "latitude_max": "124.1410834",
+        "longitude_max": "24.2544283",
+        "probability": "0.2"
+    },
+    {
+        "id": "4",
+        "latitude_min": "124.1052558",
+        "longitude_min": "24.267627920000002",
+        "latitude_max": "124.1071415",
+        "longitude_max": "24.26951358",
+        "probability": "0.3"
+    },
+    {
+        "id": "5",
+        "latitude_min": "124.1071415",
+        "longitude_min": "24.31854074",
+        "latitude_max": "124.1090272",
+        "longitude_max": "24.320426400000002",
+        "probability": "0.4"
+    },
+    {
+        "id": "6",
+        "latitude_min": "124.0995989",
+        "longitude_min": "24.34305432",
+        "latitude_max": "124.1014845",
+        "longitude_max": "24.34493998",
+        "probability": "0.5"
+    },
+    {
+        "id": "7",
+        "latitude_min": "124.1410834",
+        "longitude_min": "24.4147094",
+        "latitude_max": "124.142969",
+        "longitude_max": "24.416595060000002",
+        "probability": "0.6"
+    },
+    {
+        "id": "8",
+        "latitude_min": "124.14862602000001",
+        "longitude_min": "24.44676562",
+        "latitude_max": "124.15051168000001",
+        "longitude_max": "24.44865128",
+        "probability": "0.7"
+    },
+    {
+        "id": "9",
+        "latitude_min": "124.1259981",
+        "longitude_min": "24.46562222",
+        "latitude_max": "124.1278838",
+        "longitude_max": "24.46750788",
+        "probability": "0.8"
+    },
+    {
+        "id": "10",
+        "latitude_min": "124.1448547",
+        "longitude_min": "24.47505052",
+        "latitude_max": "124.1467404",
+        "longitude_max": "24.476936180000003",
+        "probability": "0.9"
+    }
+]

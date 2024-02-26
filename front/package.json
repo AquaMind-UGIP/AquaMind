@@ -1,7 +1,7 @@
 {
   "name": "front",
   "version": "0.1.0",
-  "homepage": "https://aquamind-ugip.github.io/AquaMind/",
+  "homepage": "https://aqua-mind.net/",
   "private": true,
   "dependencies": {
     "@react-google-maps/api": "^2.19.3",
@@ -12,6 +12,7 @@
     "@types/node": "^16.18.82",
     "@types/react": "^18.2.57",
     "@types/react-dom": "^18.2.19",
+    "papaparse": "^5.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
@@ -24,7 +25,7 @@
     "rm": "rm -rf docs",
     "mv": "mv build docs",
     "git": "git add . && git commit && git push origin master",
-    "deploy": "npm run rm && npm run build && npm run mv && npm run git",
+    "deploy": "npm run build && gh-pages -d build -m \"Updates --skip-ci\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -49,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@types/papaparse": "^5.3.14",
     "@types/react-modal": "^3.16.3",
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.35",

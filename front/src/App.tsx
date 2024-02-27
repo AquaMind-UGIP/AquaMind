@@ -5,7 +5,7 @@ import Home from "./components/home";
 
 function App() {
   return (
-    <Router basename="/AquaMind">
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>

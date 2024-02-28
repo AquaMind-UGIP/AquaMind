@@ -41,13 +41,16 @@ const Home = () => {
   }
 
   useEffect(() => {
+    const filteredDataList = dataList.filter(data => parseFloat(data.probability) > probabilityThreshold);
     var count50 = 0;
     var count60 = 0;
     var count70 = 0;
     var count80 = 0;
     var count90 = 0;
+
+
     if (map) {
-      dataList.forEach(data => {
+      filteredDataList.forEach(data => {
         var possibilityColor: any = "rgb(255, 255, 255)";
 
         var SearchBoundsCondition = true;
@@ -57,57 +60,54 @@ const Home = () => {
           }
         }
 
-        if (parseFloat(data.probability) > probabilityThreshold) {
-          if (parseFloat(data.probability) >= 0.9) {
-            possibilityColor = "rgb(0, 100, 25";
-            if (SearchBoundsCondition) {
-              count90 = count90 + 1;
-            }
-          } else if (parseFloat(data.probability) >= 0.8) {
-            possibilityColor = "rgb(0, 255, 64)";
-            if (SearchBoundsCondition) {
-              count80 = count80 + 1;
-            }
-          } else if (parseFloat(data.probability) >= 0.7) {
-            possibilityColor = "rgb(255, 255, 0)";
-            if (SearchBoundsCondition) {
-              count70 = count70 + 1;
-            }
-          } else if (parseFloat(data.probability) >= 0.6) {
-            possibilityColor = "rgb(255, 100, 0)";
-            if (SearchBoundsCondition) {
-              count60 = count60 + 1;
-            }
-          } else {
-            possibilityColor = "rgb(255, 0, 0)";
-            if (SearchBoundsCondition) {
-              count50 = count50 + 1;
-            }
+        if (parseFloat(data.probability) >= 0.9) {
+          possibilityColor = "rgb(0, 100, 25";
+          if (SearchBoundsCondition) {
+            count90 = count90 + 1;
           }
-
-          const circle = new google.maps.Circle({
-            center: {
-              lat: (parseFloat(data.latitude_min) + parseFloat(data.latitude_max))/2.0,
-              lng: (parseFloat(data.longitude_min) + parseFloat(data.longitude_max))/2.0,
-            },
-            strokeColor: possibilityColor,
-            strokeOpacity: 1,
-            strokeWeight: 2,
-            fillColor: possibilityColor,
-            fillOpacity: 1,
-            visible: true,
-            radius: 200,
-            map: map,
-          });
-
-          const circleWithData: CircleWithData = {
-            circle: circle,
-            probability: parseFloat(data.probability)
-          };
-          setCirclesWithData(prevCircles => [...prevCircles, circleWithData]);
+        } else if (parseFloat(data.probability) >= 0.8) {
+          possibilityColor = "rgb(0, 255, 64)";
+          if (SearchBoundsCondition) {
+            count80 = count80 + 1;
+          }
+        } else if (parseFloat(data.probability) >= 0.7) {
+          possibilityColor = "rgb(255, 255, 0)";
+          if (SearchBoundsCondition) {
+            count70 = count70 + 1;
+          }
+        } else if (parseFloat(data.probability) >= 0.6) {
+          possibilityColor = "rgb(255, 100, 0)";
+          if (SearchBoundsCondition) {
+            count60 = count60 + 1;
+          }
+        } else {
+          possibilityColor = "rgb(255, 0, 0)";
+          if (SearchBoundsCondition) {
+            count50 = count50 + 1;
+          }
         }
-      });
 
+        const circle = new google.maps.Circle({
+          center: {
+            lat: (parseFloat(data.latitude_min) + parseFloat(data.latitude_max))/2.0,
+            lng: (parseFloat(data.longitude_min) + parseFloat(data.longitude_max))/2.0,
+          },
+          strokeColor: possibilityColor,
+          strokeOpacity: 1,
+          strokeWeight: 2,
+          fillColor: possibilityColor,
+          fillOpacity: 1,
+          visible: true,
+          radius: 200,
+          map: map,
+        });
+
+        const circleWithData: CircleWithData = {
+          circle: circle,
+          probability: parseFloat(data.probability)
+        };
+        setCirclesWithData(prevCircles => [...prevCircles, circleWithData]);
+      });
     }
 
     const area50 = count50 * 31415;

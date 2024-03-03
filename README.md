@@ -113,8 +113,7 @@ We managed TIFF format satellite imagery data with tabular benethic data using l
 
 ### Satellite Data
 
-use satellite images from google map within the latitude and longitude range depicted in the following table
-
+We use satellite images from google map within the latitude and longitude range depicted in the following table
 <h1 align="center">
   <br>
   <a href="リンク先のURL"><img src="https://github.com/kohseim/AquaMind/blob/main/images/google_map_sample.jpg?raw=true"  width="700"></a>

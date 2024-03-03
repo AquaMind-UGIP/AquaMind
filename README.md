@@ -214,7 +214,7 @@ Absolute Quantity + Rate + Image
 
 <h1 align="center">
   <br>
-  <a href="リンク先のURL"><img src="https://github.com/kohseim/AquaMind/blob/main/images/AquaMind_構想.png?raw=true"  width="1000"></a>
+  <a href="リンク先のURL"><img src="https://github.com/kohseim/AquaMind/blob/main/images/AquaMind_画像.png?raw=true"  width="1000"></a>
   <br>
 </h1>
 

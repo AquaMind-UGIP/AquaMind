@@ -36,11 +36,10 @@
 
 ## Environment
 
-### Quick Start
-
-### Docker
-
 ### Library
+
+We managed the versions of libraries using Poetry. The libraries used are as follows.
+lightgbm, xgboost, catboost, sklearn, tabpfn, optuna, typing, numpy, pandas, matplotlib, seaborn, sweetviz, rasterio, re, cv2, statistics
 
 ### For Developers
 
@@ -62,7 +61,15 @@ poetry run flake8 <ファイルのパス>
 
 ### Dataset Overview
 
+Satellite images: obtained by calling the Google Earth Engine API.
+benthic classes data: Distribution data of content and percentage of sand, coral, algae, rock, microalgal_mats, and rubble.
+Ground Truth: The area where seaweed is distributed.
+
+
 ### Dataset Structure
+
+We managed TIFF format satellite imagery data with tabular benethic data using latitude and longitude as keys.
+
 
 ### Domain Data
 

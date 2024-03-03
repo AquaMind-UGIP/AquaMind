@@ -249,6 +249,7 @@ Classify using majority vote from the following 13 models.
 
 ### Train
 
+To enhance the generalization performance of the model, we utilized Stratified K-Fold for validation. To prevent information leakage from the test data, training and testing were conducted using datasets from different regions.
 
 ## Related
 

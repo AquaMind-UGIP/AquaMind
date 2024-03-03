@@ -203,7 +203,7 @@ Absolute Quantity + Image
 Exponential + (Image × Absolute Quantity) + Unsupervised
 
 - F  
-(Geospatial × Image) + Rate
+(Geospatial × Image) + Rate + Image
 
 - G  
 Absolute Quantity + Rate + Image
@@ -222,21 +222,21 @@ Absolute Quantity + Rate + Image
 
 Classify using majority vote from the following 13 models.
 
-| Number | Model                                   | Feature Set                            |
+| Number | Model                                   | Feature Set                                |
 |--------|-----------------------------------------|--------------------------------------------|
 | 1      | lightgbm + optuna                       | A                                          |
-| 2      | lightgbm + optuna + pseudo labeling     | B                                          |
+| 2      | lightgbm + optuna                       | B                                          |
 | 3      | lightgbm + optuna                       | C                                          |
-| 4      | xgboost + optuna + pseudo labeling      | A                                          |
+| 4      | xgboost + optuna                        | A                                          |
 | 5      | xgboost + optuna                        | B                                          |
 | 6      | catboost + optuna                       | A                                          |
-| 7      | catboost + optuna  + pseudo labeling    | B                                          |
+| 7      | catboost + optuna                       | B                                          |
 | 8      | randomforest + optuna                   | B                                          |
 | 9      | tabpfn                                  | A                                          |
-| 10     | tabpfn                                  | G                                          |
-| 11     | Ensemble{(lightgbm + optuna)*3)}       | D                                          |
-| 12     | Ensemble{(lightgbm + optuna)*3)}       | E                                          |
-| 13     | Ensemble{(xgboost + lightgbm + catboost) + optuna} | F                                |
+| 10     | tabpfn                                  | F                                          |
+| 11     | lightgbm + optuna + pseudo labeling     | D                                          |
+| 12     | lightgbm + optuna                       | E                                          |
+| 13     | lightgbm + optuna                       | G                                          |
 
 
 ### Train

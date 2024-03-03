@@ -255,3 +255,5 @@ Classify using majority vote from the following 13 models.
 
 ## Acknowledgement
 
+This repository was created by M. Kohsei, A. Hikaru, and Y. Ken for the UGIP Hackathon jointly hosted by The University of Tokyo and SoftBank. The project references prior research and utilizes a variety of open-source libraries and datasets. We also received valuable advice from 株式会社未来創造部. This project focuses on predicting the distribution of seaweed using open-source datasets, and there is potential for future accuracy improvements by enhancing the quality and variety of data.
+

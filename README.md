@@ -37,10 +37,15 @@
 Japan has a vast exclusive economic zone, and the amount of carbon dioxide absorbed by seagrasses and other plants (=blue carbon ) far exceeds that absorbed by trees and other plants on land (=green carbon). Efficient measurement of this blue carbon will allow Japan to show its contribution to climate change issues to the world while taking advantage of its geographical competitive advantage.
 
 (1) We have a problem with "efficient measurement of Blue Carbon."
-(2) For companies issuing Blue Carbon Credits, as well as fishermen and local governments who want to measure Blue Carbon,
+
+(2) For companies issuing Blue Carbon Credits, as well as fishermen and local governments who want to measure Blue Carbon
+
 (3) We provide “A highly accurate blue carbon estimation service.”
+
 (4) It can estimate the probability of seagrass existence in a specific area based on the satellite image data and benthic classes data.
+
 (5) When you use this system, there is no need to actually survey for the presence or absence of seagrass in the field using a traditional way.
+
 (6) The product is equipped with a function that automatically determines the probability of seagrass existence from  the satellite images and benthic classes data. 
 
 

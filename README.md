@@ -39,7 +39,8 @@
 ### Library
 
 We managed the versions of libraries using Poetry. The libraries used are as follows.
-lightgbm, xgboost, catboost, sklearn, tabpfn, optuna, typing, numpy, pandas, matplotlib, seaborn, sweetviz, rasterio, re, cv2, statistics
+
+`lightgbm, xgboost, catboost, sklearn, tabpfn, optuna, typing, numpy, pandas, matplotlib, seaborn, sweetviz, rasterio, re, cv2, statistics`
 
 ### For Developers
 

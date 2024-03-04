@@ -267,8 +267,10 @@ Classify using majority vote from the following 13 models.
 To enhance the generalization performance of the model, we utilized Stratified K-Fold for validation. To prevent information leakage from the test data, training and testing were conducted using datasets from different regions.
 
 ## Related
-Bahamian seagrass extent and blue carbon accounting using Earth Observation https://www.frontiersin.org/articles/10.3389/fmars.2023.1058460/full?utm_source=flipboard&utm_content=topic/bahamas
-Workflow for the Generation of Expert-Derived Training and Validation Data: A View to Global Scale Habitat Mapping https://www.frontiersin.org/articles/10.3389/fmars.2021.643381/full
+Bahamian seagrass extent and blue carbon accounting using Earth Observation
+https://www.frontiersin.org/articles/10.3389/fmars.2023.1058460/full?utm_source=flipboard&utm_content=topic/bahamas
+Workflow for the Generation of Expert-Derived Training and Validation Data: A View to Global Scale Habitat Mapping
+https://www.frontiersin.org/articles/10.3389/fmars.2021.643381/full
 
 
 ## Acknowledgement

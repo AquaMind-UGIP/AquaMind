@@ -2,7 +2,7 @@ import { useState, useEffect, ChangeEvent } from "react";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import Modal from 'react-modal'
 import Header from "./Header";
-import inference_json from './inference.json';
+import inference_json from './inference_update_sample.json';
 
 function numberWithCommas(x: any) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -30,6 +30,7 @@ const Home = () => {
   const [searchBoundsSouthWestLat, setSearchBoundsSouthWestLat] = useState(24.78);
   const [searchBoundsSouthWestLng, setSearchBoundsSouthWestLng] = useState(125.26);
   const [isSearchBounds, setIsSearchBounds] = useState(false);
+  const [showSmallMap, setShowSmallMap] = useState(false);
 
   useEffect(() => {
     setDataList(inference_json);
@@ -205,6 +206,19 @@ const Home = () => {
     });
   };
 
+  useEffect(() => {
+    function handleResize() {
+      setShowSmallMap(window.innerWidth <= 768);
+    }
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const closeModal = () => {
       setModal(false);
   };
@@ -263,6 +277,7 @@ const Home = () => {
       justifyContent: 'center',
     },
   };
+  
 
   return (
     <div style={{ minHeight: '730px' }}>
@@ -274,7 +289,8 @@ const Home = () => {
       >
         <div className="flex flex-col items-center">
           <div className="flex flex-col items-center">
-            <img src="image/logo_black_text.png" className="h-40"/>
+            <img src="image/logo_black_text.png" className="hidden md:block h-40"/>
+            <img src="image/logo_black_text.png" className="md:hidden h-20"/>
             <div className="text-white text-2xl my-10">
             You can view the areas where seaweed live, which were judged by our AI model.
             </div>
@@ -284,12 +300,36 @@ const Home = () => {
           </div>
         </div>
       </Modal>
-      <div className="App None h-screen" id="top">
+      <div className="App None" id="top">
         {!modalIsOpen && <Header />}
-        <div className="h-screen flex justify-center items-center" style={{background: 'rgb(18,18,31)'}}>          
+        <div className="flex-col md:flex justify-center items-center md:flex-row-reverse" style={{background: 'rgb(18,18,31)'}}>
+          <LoadScript googleMapsApiKey={API_KEY}>
+            <div className="relative w-full h-full">
+              {!showSmallMap && (
+                <GoogleMap
+                mapContainerStyle={{width: "100%",height: "100vh"}}
+                center={{lat: 24.83,lng: 125.31}}
+                zoom={11}
+                options={mapOptions}
+                onLoad={handleMapLoad}
+                >
+                </GoogleMap>
+              )}
+              {showSmallMap && (
+                <GoogleMap
+                mapContainerStyle={{width: "100%",height: "50vh"}}
+                center={{lat: 24.83,lng: 125.31}}
+                zoom={11}
+                options={mapOptions}
+                onLoad={handleMapLoad}
+                >
+                </GoogleMap>
+              )}
+            </div>
+          </LoadScript>
           <div className="mx-5">
             <div className="flex flex-col">
-              <div className="text-black bg-white rounded-xl">
+              <div className="mt-12 text-black bg-white rounded-xl">
                 <div className="text-2xl mt-4">Seagrasses Distribution</div>
                 <div className="text-2xl">Probability Threshold</div>
                 <div className="flex justify-center items-center">
@@ -361,11 +401,10 @@ const Home = () => {
                   <div className="w-24">（{area90rate.toFixed(2).toString()}%）</div>
                 </div>
               </div>
-
               {isSearchBounds && (
                 <button
                   onClick={switchSearchBoundsState}
-                  className="mt-8 text-3xl text-white bg-gray-700 hover:bg-black px-5 py-1 rounded-lg border border-white transition-transform transform active:scale-95"
+                  className="mt-8 mb-12 md:mb-0 text-3xl text-white bg-gray-700 hover:bg-black px-5 py-1 rounded-lg border border-white transition-transform transform active:scale-95"
                 >
                   Select Area
                 </button>
@@ -374,24 +413,13 @@ const Home = () => {
               {!isSearchBounds && (
                 <button
                   onClick={switchSearchBoundsState}
-                  className="mt-8 text-3xl text-black bg-white hover:bg-gray-300 px-5 py-1 rounded-lg border border-gray-500 transition-transform transform active:scale-95"
+                  className="mt-8 mb-12 md:mb-0 text-3xl text-black bg-white hover:bg-gray-300 px-5 py-1 rounded-lg border border-gray-500 transition-transform transform active:scale-95"
                 >
                   Select Area
                 </button>
               )}
             </div>
           </div>
-            {/* <div className="bg-white" style={{ width: `${60}%`, height: `${80}vh` }}></div> */}
-            <LoadScript googleMapsApiKey={API_KEY}>
-              <GoogleMap
-                mapContainerStyle={{width: "100%",height: "100vh"}}
-                center={{lat: 24.83,lng: 125.31}}
-                zoom={11}
-                options={mapOptions}
-                onLoad={handleMapLoad}
-              >
-              </GoogleMap>
-            </LoadScript>
         </div>
       </div>
     </div>

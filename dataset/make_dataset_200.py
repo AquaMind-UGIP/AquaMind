@@ -64,9 +64,9 @@ start_date = "2022-01-01"
 end_date = "2022-12-31"
 
 output_dir = "C:/Users/mityu/OneDrive/デスクトップ/AtCoder/dataset/"
-csv_path = os.path.join(output_dir, "dataset.csv")
-if os.path.exists(csv_path):
-    os.remove(csv_path)
+csv_path = os.path.join(output_dir, "dataset_200.csv")
+# if os.path.exists(csv_path):
+#     os.remove(csv_path)
 if not os.path.exists(csv_path):
     df = pd.DataFrame(
         columns=[
@@ -120,7 +120,7 @@ rubbleBand = dataset.select("benthic").eq(12)  # Rubble
 start_time = time.time()
 pre_time = start_time
 pre_percentage = 0
-id = 1
+id = 6325
 
 # 海岸付近ポリゴンの頂点座標
 polygon_coords = [
@@ -283,13 +283,20 @@ for coord in polygon_coords:
 
 # # 表示
 # plt.show()
+    
+print(int(verticalNum), int(horizontalNum))
 
 inside_points = []
 outside_points = []
-for y in range(int(verticalNum)):
+for y in range(35, int(verticalNum)):
     # if latitude_min + y * cellSize < 24.32:
     #     continue
-    for x in range(int(horizontalNum)):
+    if y == 35:
+        x=44
+    else:
+        x=0
+    while x < int(horizontalNum):
+
         print(f"({y}, {x})/({verticalNum}, {horizontalNum})")
 
         inside_points = []
@@ -499,7 +506,7 @@ for y in range(int(verticalNum)):
                 first_image = ee.Image(images.get(0))
 
                 tiff_file = (
-                    f"C:/Users/mityu/OneDrive/デスクトップ/AtCoder/dataset/img_tif/{id}.tif"
+                    f"C:/Users/mityu/OneDrive/デスクトップ/AtCoder/dataset/img_tif_200/{id}.tif"
                 )
                 png_file = f"/Users/andohikaru/Desktop/YAM/YAM/dataset/img_png/{id}.png"
                 geemap.ee_export_image(
@@ -510,5 +517,6 @@ for y in range(int(verticalNum)):
                     file_per_band=False,
                 )
                 id += 1
+                x+=1
         # if y == 3:
         # plt.show()

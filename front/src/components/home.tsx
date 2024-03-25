@@ -2,7 +2,7 @@ import { useState, useEffect, ChangeEvent } from "react";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import Modal from 'react-modal'
 import Header from "./Header";
-import inference_json from './inference.json';
+import inference_json from './inference_update_sample.json';
 
 function numberWithCommas(x: any) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -329,7 +329,7 @@ const Home = () => {
           </LoadScript>
           <div className="mx-5">
             <div className="flex flex-col">
-              <div className="mt-12 md:mt-0 text-black bg-white rounded-xl">
+              <div className="mt-12 text-black bg-white rounded-xl">
                 <div className="text-2xl mt-4">Seagrasses Distribution</div>
                 <div className="text-2xl">Probability Threshold</div>
                 <div className="flex justify-center items-center">
